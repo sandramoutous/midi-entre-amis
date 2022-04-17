@@ -30,8 +30,6 @@ ActiveRecord::Schema.define(version: 2022_04_17_152411) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
-    t.integer "note"
-    t.boolean "favorite", default: false
     t.bigint "category_id"
     t.bigint "cuisine_id"
     t.index ["category_id"], name: "index_restaurants_on_category_id"
