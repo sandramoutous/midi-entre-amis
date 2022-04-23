@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2022_04_17_152411) do
   enable_extension "plpgsql"
 
   create_table "categories", force: :cascade do |t|
-    t.string "title"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -30,8 +30,13 @@ ActiveRecord::Schema.define(version: 2022_04_17_152411) do
   create_table "restaurants", force: :cascade do |t|
     t.string "name"
     t.string "address"
+    t.string "city"
+    t.string "image"
+    t.text "description"
     t.bigint "category_id"
     t.bigint "cuisine_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.index ["category_id"], name: "index_restaurants_on_category_id"
     t.index ["cuisine_id"], name: "index_restaurants_on_cuisine_id"
   end
