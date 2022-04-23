@@ -7,4 +7,17 @@
     </h4>
     <p>Petite ou grosse faim ?</p>
   </div>
+  <div class="col-lg-2" style="margin-inline: auto">
+    <%= form_tag(search_restaurants_path, method: 'get', class: 'col') do %>
+      <%= fields_for :search do |sf| %>
+        <div class="form-group d-flex flex-column mb-2">
+          <%= sf.label :category_id, class: 'control-label' %>
+          <%= sf.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}), { include_blank: false}, {class: 'form-control form-select' } %>
+        </div>
+      <% end %>
+      <div class="form-group">
+        <%= submit_tag 'A table !', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
 </div>
