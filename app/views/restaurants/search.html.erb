@@ -1,0 +1,26 @@
+<div class="col-12">
+  <h1 class="text-center my-3">Faites votre choix</h1>
+  <h5 class="text-center mb-4">parmi nos <%= @restaurants.count %> suggestions</h5>
+  <div class="col-lg-6 m-auto">
+    <%= render 'search' %>
+  </div>
+  <div class="row ms-4">
+    <% @restaurants.each do |restaurant| %>
+      <div class="col-sm-3">
+        <div class="card mb-3" style="width: 400px;">
+          <img class="card-img-top" src="<%= restaurant.image %>" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to restaurant.name, restaurant, class: '' %>
+            </h5>
+            <p class="card-text">
+              <%= "#{restaurant.address} #{restaurant.city}" %>
+            </p>
+            <span class="badge bg-info"><%= restaurant.category.name %></span>
+            <span class="badge bg-primary"><%= restaurant.cuisine.name.capitalize %></span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

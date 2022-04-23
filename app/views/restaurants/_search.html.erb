@@ -1,0 +1,17 @@
+<%= form_tag(search_restaurants_path, method: 'get', class: 'col') do %>
+  <%= fields_for :search do |sf| %>
+    <div class="form-floating">
+      <%= sf.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}, @params.fetch(:category_id, nil)), { include_blank: false}, {class: 'form-control form-select' } %>
+      <%= sf.label 'Catégorie', class: 'control-label' %>
+    </div>
+    <div class="my-3">
+      <% Cuisine.all.each do |cuisine| %>
+        <div class="form-check form-check-inline">
+          <%= check_box_tag "search[cuisine_ids][]", cuisine.id, @params.fetch(:cuisine_ids, []).include?(cuisine.id.to_s), id: cuisine.name, class: 'form-check-input' %>
+          <label class="custom-control-label" for="<%= cuisine.name %>"><%= cuisine.name.capitalize %></label>
+        </div>
+      <% end %>
+      <button type="submit" class="btn btn-primary">Rechercher</button>
+    </div>
+  <% end %>
+<% end %>
