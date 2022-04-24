@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <%= link_to 'Midi entre amis', root_path, class: 'navbar-brand mx-4' %>
   <div style="margin-right: 2em;">
     <ul class="navbar-nav">
       <% if user_signed_in? %>

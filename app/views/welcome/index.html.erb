@@ -1,6 +1,6 @@
 <div class="col-12 home-banner">
   <h1 class="text-center m-3">Midi entre amis</h1>
-  <div class="text-center m-3">
+  <div class="text-center mt-4">
     <h4>
       L'appli qui vous guide le midi.<br>
       Trouvez votre bonheur et régalez-vous grâce à nos suggestions incroyables !
@@ -11,12 +11,12 @@
     <%= form_tag(search_restaurants_path, method: 'get', class: 'col') do %>
       <%= fields_for :search do |sf| %>
         <div class="form-group d-flex flex-column mb-2">
-          <%= sf.label :category_id, class: 'control-label' %>
+          <% sf.label :category_id, class: 'control-label' %>
           <%= sf.select :category_id, options_for_select(Category.all.map {|category| [category.name, category.id]}), { include_blank: false}, {class: 'form-control form-select' } %>
         </div>
       <% end %>
       <div class="form-group">
-        <%= submit_tag 'A table !', class: 'btn btn-primary' %>
+        <%= submit_tag 'A table !', class: 'btn btn-primary mt-2' %>
       </div>
     <% end %>
   </div>

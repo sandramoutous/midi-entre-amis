@@ -2,6 +2,7 @@ class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: :show
 
   def index
+    @params = search_params
     @restaurants = Restaurant.all
   end
 
