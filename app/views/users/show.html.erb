@@ -1,0 +1,9 @@
+<div class="col-12">
+  <div class="col-lg-8 mx-auto">
+    <h1 class="border-bottom pb-1">Mes infos</h1>
+    <p>Identifiant : <%= @user.email %></p>
+    <p>Mot de passe :  ●●●●●●</p>
+    <p><%= link_to 'Réinitialiser mon mot de passe', edit_password_path(@user) %></p>
+    <p><%= link_to 'Supprmier mon compte', user_path(@user), method: :delete, data: { confirm: 'Êtes-vous sûr(e)?' }, class: 'btn btn-outline-danger' %></p>
+  </div>
+</div>
