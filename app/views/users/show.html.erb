@@ -1,6 +1,14 @@
 <div class="col-12">
   <div class="col-lg-8 mx-auto">
-    <h1 class="border-bottom pb-1">Mes infos</h1>
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to 'Mes infos', user_path(current_user), class: 'nav-link active border-start' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Ma wishlist', wishlist_user_path(current_user), class: 'nav-link text-muted border-start' %>
+      </li>
+    </ul>
+    <h2 class="border-bottom pb-1 mt-3">Mes infos</h2>
     <p>Identifiant : <%= @user.email %></p>
     <p>Mot de passe :  ●●●●●●</p>
     <p><%= link_to 'Réinitialiser mon mot de passe', edit_password_path(@user) %></p>

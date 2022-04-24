@@ -1,0 +1,13 @@
+<%= form_for @user_restaurant do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :restaurant_id,value: @restaurant.id %>
+  <div class="input-group my-3">
+    <span class="input-group-text" id="basic-addon1">Restaurant</span>
+    <%= f.select :restaurant_id, options_for_select(Restaurant.all.map {|restaurant| [restaurant.name, restaurant.id]}, @restaurant.id), { include_blank: false}, { class: 'form-control'} %>
+  </div>
+  <div class="mb-3">
+    <%= f.label 'Commentaire', class: 'form-label' %>
+    <%= f.text_area :comment, class: 'form-control' %>
+  </div>
+  <%= f.submit 'Enregistrer', class: 'btn btn-primary' %>
+<% end %>

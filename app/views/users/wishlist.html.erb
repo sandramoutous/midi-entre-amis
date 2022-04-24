@@ -1,0 +1,32 @@
+<div class="col-12">
+  <div class="col-lg-8 mx-auto">
+    <ul class="nav">
+      <li class="nav-item">
+        <%= link_to 'Mes infos', user_path(current_user), class: 'nav-link text-muted' %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Ma wishlist', wishlist_user_path(current_user), class: 'nav-link active' %>
+      </li>
+    </ul>
+    <h2 class="border-bottom pb-1 mt-3">Ma wishlist</h2>
+    <% @user_restaurants.each do |user_restaurant| %>
+      <% restaurant = user_restaurant.restaurant %>
+      <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="<%= restaurant.image %>" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h5 class="card-title"><%= link_to restaurant.name, restaurant %></h5>
+              <p class="card-text"><%= user_restaurant.comment %></p>
+              <%= link_to 'Modifier', edit_user_restaurant_path(user_restaurant), class: 'btn btn-sm btn-primary' %>
+              <%= link_to 'Supprimer', user_restaurant, method: :delete, data: { confirm: 'Êtes-vous sûr(e)?' }, class: 'btn btn-sm btn-outline-danger' %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <%= link_to 'Retour aux restaurants', restaurants_path, class: 'btn btn-success' %>
+  </div>
+</div>

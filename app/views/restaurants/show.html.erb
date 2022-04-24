@@ -19,6 +19,15 @@
           </p>
           <span class="badge bg-info"><%= @restaurant.category.name %></span>
           <span class="badge bg-primary"><%= @restaurant.cuisine.name.capitalize %></span>
+          <% if current_user.present? %>
+            <% if current_user.favorite?(@restaurant) %>
+              <div class="mt-3"><%= link_to '♥ Déjà dans la wishlist', wishlist_user_path(current_user), class: 'text-success' %></div>
+            <% else %>
+              <div class="mt-3">
+                <%= link_to 'Ajouter à ma wishlist', new_user_restaurant_path(restaurant_id: @restaurant.id), class: 'btn btn-warning' %>
+              </div>
+            <% end %>
+          <% end %>
         </div>
       </div>
     </div>

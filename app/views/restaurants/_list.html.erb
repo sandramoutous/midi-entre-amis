@@ -4,7 +4,12 @@
       <img class="card-img-top list-card-img" src="<%= restaurant.image %>" alt="">
       <div class="card-body">
         <h5 class="card-title">
-          <%= link_to restaurant.name, restaurant, class: '' %>
+          <%= link_to restaurant.name, restaurant %>
+          <% if user_signed_in? %>
+            <% if current_user.favorite?(restaurant) %>
+              <span class="text-danger wishlist-icon">♥</span>
+            <% end %>
+          <% end %>
         </h5>
         <p class="card-text">
           <%= "#{restaurant.address} #{restaurant.city}" %>

@@ -8,7 +8,7 @@
           </button>
           <ul class="dropdown-menu dropdown-menu-end">
             <li><%= link_to "Mes infos", user_path(current_user), class: "dropdown-item" %></li>
-            <li><button class="dropdown-item" type="button">Ma wishlist</button></li>
+            <li><%= link_to "Ma wishlist", wishlist_user_path(current_user), class: "dropdown-item" %></li>
             <li><hr class="dropdown-divider"></li>
             <li><%= link_to "Se déconnecter", destroy_user_session_path, method: :delete, class: "dropdown-item" %></li>
           </ul>
